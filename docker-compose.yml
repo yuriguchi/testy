@@ -5,17 +5,16 @@ services:
     ports:
       - '80:80'
       - '443:443'
-    volumes:
-      - ./backend/testy/testy-static:/opt/testy/testy/testy-static
-      - ./docs/html/:/opt/testy/docs/
-      - ./nginx/testy-prod.conf.template:/etc/nginx/templates/testy-prod.conf.template
-      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
-      - ${VOLUMES_PATH}/media:/opt/testy/testy/media
-      - ${VOLUMES_PATH}/build:/opt/testy-frontend/build
-      - ${SSL_CERT_KEY_PATH}:/etc/ssl/private/cert.key
-      - ${SSL_CERT_PATH}:/etc/ssl/certs/cert.crt
     env_file:
       - ${ENV_FILE:-.env}
+    volumes:
+      - testy-static:/opt/testy/testy/testy-static
+      - ./nginx/testy-prod.conf.template:/etc/nginx/templates/testy-prod.conf.template
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - media_data:/opt/testy/testy/media
+      - build_data:/opt/testy-frontend/build
+      - ${SSL_CERT_KEY_PATH}:/etc/ssl/private/cert.key
+      - ${SSL_CERT_PATH}:/etc/ssl/certs/cert.crt
     depends_on:
       - client
       - testy
@@ -24,13 +23,13 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
-    volumes:
-      - '/app/node_modules'
-      - '${VOLUMES_PATH}/build:/app/build'
-    environment:
-      - NODE_ENV=production
     env_file:
       - ${ENV_FILE:-.env}
+    volumes:
+      - '/app/node_modules'
+      - 'build_data:/app/build'
+    environment:
+      - NODE_ENV=production
     user: "${UID}:${GID}"
   testy:
     container_name: testy
@@ -43,34 +42,29 @@ services:
         - ENV=prod
     image: testy:latest
     pull_policy: build
+    env_file:
+      - ${ENV_FILE:-.env}
     volumes:
-      - './backend/testy/media:/testy/media'
-      - './backend/testy/testy-static:/testy/testy-static'
+      - 'media_data:/testy/media'
+      - 'testy-static:/testy/testy-static'
     environment:
       - DJANGO_SETTINGS_MODULE=root.settings.production
     ports:
       - '8001:8000'
-    env_file:
-      ${ENV_FILE:-.env}
     command: scripts/entrypoint.sh
     depends_on:
       pgbouncer:
         condition: service_healthy
       redis:
         condition: service_healthy
-    deploy:
-      resources:
-        limits:
-          cpus: '3.0'
-          memory: 4g
 
   db:
     container_name: testy_db
     image: postgres:14.5-alpine
-    volumes:
-      - '${VOLUMES_PATH}/pg-data:/var/lib/postgresql/data'
     env_file:
-      ${ENV_FILE:-.env}
+      - ${ENV_FILE:-.env}
+    volumes:
+      - 'pg_data:/var/lib/postgresql/data'
     healthcheck:
       test: [ "CMD-SHELL", "pg_isready -U postgres" ]
       interval: 5s
@@ -84,7 +78,7 @@ services:
     container_name: testy_pgbouncer
     image: edoburu/pgbouncer:1.22.1-p0
     env_file:
-      ${ENV_FILE:-.env}
+      - ${ENV_FILE:-.env}
     ports:
       - "5436:5432"
     healthcheck:
@@ -100,8 +94,10 @@ services:
     container_name: testy_redis
     image: redis:alpine
     command: redis-server --appendonly yes
+    env_file:
+      - ${ENV_FILE:-.env}
     volumes:
-      - '${VOLUMES_PATH}/redis_data:/data'
+      - 'redis_data:/data'
     ports:
       - '6380:6379'
     healthcheck:
@@ -118,13 +114,14 @@ services:
     image: testy:latest
     pull_policy: build
     command: celery -A root worker -B -l INFO
+    mem_limit: 1g
+    env_file:
+      - ${ENV_FILE:-.env}
     volumes:
-      - './backend/testy/media:/testy/media'
-      - './backend/testy/testy-static:/testy/testy-static'
+      - 'media_data:/testy/media'
+      - 'testy-static:/testy/testy-static'
     environment:
       - DJANGO_SETTINGS_MODULE=root.settings.production
-    env_file:
-      ${ENV_FILE:-.env}
     healthcheck:
       test: [ "CMD-SHELL", "celery -b ${CELERY_BROKER_URL} inspect ping" ]
       interval: 5s
@@ -133,11 +130,6 @@ services:
     depends_on:
       - redis
       - pgbouncer
-    deploy:
-      resources:
-        limits:
-          cpus: '3.0'
-          memory: 4g
 
   notification-worker:
     container_name: notifications
@@ -146,8 +138,16 @@ services:
     image: testy:latest
     pull_policy: build
     restart: always
+    mem_limit: 1g
     env_file:
-      ${ENV_FILE:-.env}
+      - ${ENV_FILE:-.env}
     depends_on:
       - testy
     command: python manage.py runworker notifications
+
+volumes:
+  pg_data:
+  media_data:
+  build_data:
+  testy-static:
+  redis_data:
