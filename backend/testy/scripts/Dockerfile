@@ -21,3 +21,5 @@ COPY ./requirements/${ENV}.txt requirements/
 RUN pip install -r requirements/${ENV}.txt
 
 COPY . /testy
+
+RUN chmod +x scripts/entrypoint.sh
