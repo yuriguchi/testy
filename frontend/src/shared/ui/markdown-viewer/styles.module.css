@@ -1,0 +1,30 @@
+.tabs {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: fit-content;
+  height: 24px;
+  overflow: hidden;
+}
+
+.tab {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  background-color: transparent;
+  height: 100%;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--y-sky-80);
+  border: none;
+  line-height: 16px;
+}
+
+.tab:not(.active):hover {
+  color: var(--y-interactive-hover);
+}
+
+.active {
+  border: 1px solid var(--y-color-control-border);
+}

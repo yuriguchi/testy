@@ -1,0 +1,7 @@
+.title {
+  margin-bottom: 0 !important;
+  min-width: 100px;
+  min-height: 32px;
+  width: fit-content;
+  line-height: 32px !important;
+}

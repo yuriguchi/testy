@@ -1,0 +1,37 @@
+.buttonType {
+  padding: 0;
+  font-size: 24px;
+  color: var(--y-sky-50);
+  background-color: transparent !important;
+}
+
+.active {
+  border: 1px solid var(--y-color-control-border);
+}
+
+.buttonType:hover {
+  color: var(--y-interactive-hover) !important;
+}
+
+.disabled {
+  background-color: rgba(0, 0, 0, 0.04) !important;
+  opacity: 0.7;
+}
+
+.disabled:hover {
+  color: var(--y-sky-50) !important;
+}
+
+.label {
+  color: var(--y-sky-80);
+}
+
+.labelIsRequired::before {
+  display: inline-block;
+  margin-inline-end: 4px;
+  color: #c44d56;
+  font-size: 14px;
+  font-family: SimSun, sans-serif;
+  line-height: 1;
+  content: "*";
+}

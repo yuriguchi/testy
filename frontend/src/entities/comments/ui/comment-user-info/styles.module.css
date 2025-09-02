@@ -1,0 +1,15 @@
+.userInfo {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 12px;
+}
+
+.edited {
+  color: rgb(153, 153, 153);
+}
+
+.link {
+  color: #6e6e6e;
+  text-decoration: underline;
+}

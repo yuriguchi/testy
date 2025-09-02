@@ -1,0 +1,8 @@
+.btn {
+  height: 24px;
+  pointer-events: auto;
+}
+
+.btnInActive {
+  border: none;
+}

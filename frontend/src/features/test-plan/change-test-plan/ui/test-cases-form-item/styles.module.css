@@ -1,0 +1,49 @@
+.treeBlock :global(.ant-tree-node-content-wrapper) {
+  display: flex !important;
+}
+
+.switcher {
+  margin-bottom: 8px;
+}
+
+.filterBtn {
+  margin-left: 8px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 8px;
+  align-items: baseline;
+  margin-bottom: 8px;
+}
+
+.rowWithThree {
+  grid-template-columns: 80px 1fr 60px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.form {
+  padding: 0 4px;
+}
+.filterBtn {
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 3px;
+  border: 1px solid #d9d9d9;
+}
+
+.archivedRow {
+  display: flex;
+  justify-content: flex-start;
+  gap: 8px;
+}

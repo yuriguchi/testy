@@ -1,0 +1,40 @@
+.defaultBar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px;
+  gap: 12px;
+}
+
+.barTitle {
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.barBtns {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+}
+
+.barBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  cursor: pointer;
+  color: var(--y-sky-50);
+  transition: all 0.1s ease-in;
+}
+
+.barBtn:hover {
+  color: var(--y-pending-hover);
+}

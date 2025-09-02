@@ -1,0 +1,19 @@
+.title {
+  align-self: center;
+  min-height: 28px;
+  margin-bottom: 4px !important;
+}
+
+.infoTitle {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16px;
+  color: var(--y-grey-40);
+}
+
+.infoValue {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 16px;
+  color: var(--y-grey-40);
+}

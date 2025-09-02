@@ -1,0 +1,55 @@
+.resultList {
+  margin: 12px 0;
+}
+
+.resultListItem {
+  border: 1px solid #ddd;
+  margin-bottom: 8px;
+}
+
+.resultListHeader {
+  display: flex;
+  padding: 8px;
+}
+
+.resultListBody {
+  padding: 8px;
+}
+
+.resultListFooter {
+  padding: 4px 8px;
+  border-top: 1px solid #ddd;
+  background-color: #f7f7f7;
+  font-size: 13px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.resultListHeaderBase {
+  flex: 1 1 auto;
+}
+
+.resultListHeaderStatus {
+  flex: 0 1 125px;
+  float: right;
+}
+
+.resultListHeaderStatus .status {
+  float: right;
+  margin: 0;
+}
+
+.divider {
+  color: var(--y-grey-30);
+  margin: 0 4px;
+}
+
+.link {
+  color: var(--y-grey-30);
+  text-decoration: underline;
+}
+
+.activeHashResult {
+  background-color: #f7f7f7;
+  border-color: #c0c0c0;
+}

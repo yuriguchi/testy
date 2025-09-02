@@ -1,0 +1,58 @@
+.graphsBlock {
+  display: flex;
+  width: 100%;
+  column-gap: 72px;
+  margin-top: 24px;
+}
+
+.graphsTitle {
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 400;
+  height: 32px;
+}
+
+.pieWrapper {
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+  min-height: 288px;
+  width: 100%;
+  position: relative;
+}
+
+.barWrapper {
+  width: 100%;
+  height: 288px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.barWrapper :global(.recharts-default-legend) {
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.barWrapper :global(.recharts-legend-item) {
+  width: fit-content;
+}
+
+.pieHeader {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  height: 32px;
+}
+
+.notEstimatedBlock {
+  display: flex;
+  font-size: 15px;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}

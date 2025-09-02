@@ -1,0 +1,5 @@
+export * from "./test-plan-layout/test-plan-layout"
+export * from "./test-plans-overview-tab/test-plans-overview-tab"
+export * from "./test-plans-activity-tab/test-plans-activity-tab"
+export * from "./test-plans-custom-attributes-tab/test-plans-custom-attributes-tab"
+export * from "./test-plans-attachments-tab/test-plans-attachments-tab"

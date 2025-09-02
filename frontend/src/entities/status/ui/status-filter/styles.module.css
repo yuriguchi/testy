@@ -1,0 +1,4 @@
+.select :global(.ant-select-selection-item) {
+  height: auto;
+  padding: 2px 0;
+}

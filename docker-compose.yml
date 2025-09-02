@@ -1,0 +1,152 @@
+services:
+  nginx:
+    container_name: nginx
+    image: nginx:1.25.1
+    ports:
+      - '80:80'
+      - '443:443'
+    volumes:
+      - ./backend/testy/testy-static:/opt/testy/testy/testy-static
+      - ./nginx/testy-prod.conf.template:/etc/nginx/templates/testy-prod.conf.template
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - ${VOLUMES_PATH}/media:/opt/testy/testy/media
+      - ${VOLUMES_PATH}/build:/opt/testy-frontend/build
+      - ${SSL_CERT_KEY_PATH}:/etc/ssl/private/cert.key
+      - ${SSL_CERT_PATH}:/etc/ssl/certs/cert.crt
+    env_file:
+      - ${ENV_FILE:-.env}
+    depends_on:
+      - client
+      - testy
+  client:
+    container_name: testy-frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    volumes:
+      - '/app/node_modules'
+      - '${VOLUMES_PATH}/build:/app/build'
+    environment:
+      - NODE_ENV=production
+    env_file:
+      - ${ENV_FILE:-.env}
+    user: "${UID}:${GID}"
+  testy:
+    container_name: testy
+    extra_hosts:
+      - 'host.docker.internal:host-gateway'
+    build:
+      context: ./backend/testy
+      dockerfile: scripts/Dockerfile
+      args:
+        - ENV=prod
+    image: testy:latest
+    pull_policy: build
+    volumes:
+      - './backend/testy/media:/testy/media'
+      - './backend/testy/testy-static:/testy/testy-static'
+    environment:
+      - DJANGO_SETTINGS_MODULE=root.settings.production
+    ports:
+      - '8001:8000'
+    env_file:
+      ${ENV_FILE:-.env}
+    command: scripts/entrypoint.sh
+    depends_on:
+      pgbouncer:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    deploy:
+      resources:
+        limits:
+          cpus: '3.0'
+          memory: 4g
+
+  db:
+    container_name: testy_db
+    image: postgres:14.5-alpine
+    volumes:
+      - '${VOLUMES_PATH}/pg-data:/var/lib/postgresql/data'
+    env_file:
+      ${ENV_FILE:-.env}
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    ports:
+      - '5435:5432'
+    shm_size: '1gb'
+
+  pgbouncer:
+    container_name: testy_pgbouncer
+    image: edoburu/pgbouncer:1.22.1-p0
+    env_file:
+      ${ENV_FILE:-.env}
+    ports:
+      - "5436:5432"
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -h ${DB_HOST} -U ${POSTGRES_USER}" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    depends_on:
+      db:
+        condition: service_healthy
+
+  redis:
+    container_name: testy_redis
+    image: redis:alpine
+    command: redis-server --appendonly yes
+    volumes:
+      - '${VOLUMES_PATH}/redis_data:/data'
+    ports:
+      - '6380:6379'
+    healthcheck:
+      test: [ "CMD", "redis-cli", "--raw", "incr", "ping" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  celery:
+    container_name: testy_celery
+    extra_hosts:
+      - 'host.docker.internal:host-gateway'
+    restart: always
+    image: testy:latest
+    pull_policy: build
+    command: celery -A root worker -B -l INFO
+    volumes:
+      - './backend/testy/media:/testy/media'
+      - './backend/testy/testy-static:/testy/testy-static'
+    environment:
+      - DJANGO_SETTINGS_MODULE=root.settings.production
+    env_file:
+      ${ENV_FILE:-.env}
+    healthcheck:
+      test: [ "CMD-SHELL", "celery -b ${CELERY_BROKER_URL} inspect ping" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    depends_on:
+      - redis
+      - pgbouncer
+    deploy:
+      resources:
+        limits:
+          cpus: '3.0'
+          memory: 4g
+
+  notification-worker:
+    container_name: notifications
+    extra_hosts:
+      - 'host.docker.internal:host-gateway'
+    image: testy:latest
+    pull_policy: build
+    restart: always
+    env_file:
+      ${ENV_FILE:-.env}
+    depends_on:
+      - testy
+    command: python manage.py runworker notifications

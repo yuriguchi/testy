@@ -1,0 +1,5 @@
+.image {
+  display: flex;
+  border-radius: 100%;
+  overflow: hidden;
+}

@@ -1,0 +1,26 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 33px;
+}
+
+.loadMore {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  flex-grow: 1;
+  border-bottom: 1px solid var(--y-grey-20);
+  border-left: 1px solid var(--y-sky-20);
+}
+
+.isRoot {
+  border-left: none;
+}
+
+.isLast {
+  border-bottom: none;
+}

@@ -1,0 +1,163 @@
+.item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  list-style: none;
+  position: relative;
+  padding: 8px;
+}
+
+.icon {
+  min-width: 28px;
+  min-height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: var(--y-interactive-default);
+  color: #fff;
+  font-size: 12px;
+}
+
+.content {
+  margin-left: 14px;
+  text-wrap: wrap;
+  word-break: normal;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  margin-left: auto;
+  gap: 14px;
+}
+
+/* FIELD */
+
+.fieldUl {
+  max-height: 200px;
+  overflow: hidden;
+  overflow-y: scroll;
+  padding: 0;
+  margin: 0;
+}
+
+.scenarioBtn {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  user-select: none;
+}
+
+.fieldItem {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  list-style: none;
+  position: relative;
+  padding: 8px;
+  padding-left: 0;
+  width: 100%;
+}
+
+.fieldWrapper {
+  display: flex;
+  flex-direction: column;
+  margin-left: 44px;
+  width: 100%;
+}
+
+.fieldIcon {
+  min-width: 28px;
+  min-height: 28px;
+  max-width: 28px;
+  max-height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: var(--y-interactive-default);
+  color: #fff;
+  font-size: 12px;
+  position: absolute;
+  left: 8px;
+  top: 6px;
+}
+
+.fieldContent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-bottom: 2px;
+  margin-left: 14px;
+}
+
+.arrowIcon {
+  transition: all 0.1s ease-in;
+}
+
+/* RESULT */
+.resultFieldItem {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  position: relative;
+  padding: 8px;
+  align-items: center;
+}
+
+.resultFieldIcon {
+  min-width: 28px;
+  min-height: 28px;
+  max-width: 28px;
+  max-height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: var(--y-interactive-default);
+  color: #fff;
+  font-size: 12px;
+}
+
+.resultSelect {
+  margin-left: auto;
+  min-width: 160px;
+}
+
+.resultModalFieldWrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.resultModalFieldContent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-bottom: 2px;
+  margin-left: 14px;
+}
+
+.resultStatus {
+  margin-left: auto;
+}
+
+.resultFieldWrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 14px;
+}
+
+.resultFieldContent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-bottom: 2px;
+  margin-left: 14px;
+}

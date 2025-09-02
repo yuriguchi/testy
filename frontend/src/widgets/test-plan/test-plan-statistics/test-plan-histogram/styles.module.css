@@ -1,0 +1,14 @@
+.filtersBlock {
+  margin-left: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.byAttrLabel {
+  font-size: 13;
+  position: absolute;
+  top: -20;
+  left: 0;
+  color: var(--y-grey-30);
+}

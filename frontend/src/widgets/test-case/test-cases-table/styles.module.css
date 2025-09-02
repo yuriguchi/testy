@@ -1,0 +1,13 @@
+.link {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+}
+
+.list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin: 0;
+}

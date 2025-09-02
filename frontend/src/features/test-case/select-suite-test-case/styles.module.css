@@ -1,0 +1,104 @@
+.treeBlock {
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+  max-height: 500px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin-bottom: 8px;
+}
+
+.nodeBody {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  min-height: 16px;
+  padding: 8px 4px;
+  border-radius: 2px;
+  color: var(--y-grey-50);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  cursor: pointer;
+  border-bottom: 1px solid var(--y-grey-20);
+  border-left: 1px solid var(--y-sky-20);
+}
+
+.nodeBody:hover .infoIcon {
+  opacity: 1;
+}
+
+.infoIcon {
+  display: block;
+  margin: 0 4px;
+  min-width: 16px;
+  min-height: 16px;
+  margin-bottom: auto;
+  opacity: 0;
+}
+
+.nodeLeftAction {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 16px;
+  height: 100%;
+  margin-right: 4px;
+  gap: 2px;
+}
+
+.arrowIcon {
+  color: var(--y-sky-50);
+  transition: all 0.2s ease-in;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  transform: rotate(270deg);
+  margin-bottom: auto;
+}
+
+.arrowIconOpen {
+  color: var(--y-sky-80);
+  transform: rotate(360deg);
+}
+
+.loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  margin-bottom: auto;
+}
+
+.activeNode {
+  color: var(--y-interactive-default);
+  background-color: var(--y-grey-10);
+}
+
+.isRoot {
+  border-left: none;
+}
+
+.isLast {
+  border-bottom: none;
+}
+
+.noborder {
+  border-left: none;
+}
+
+.arrowIcon:hover {
+  color: var(--y-pending-hover);
+}
+
+.name {
+  color: var(--y-sky-80);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.activeLink {
+  color: var(--y-interactive-default);
+}

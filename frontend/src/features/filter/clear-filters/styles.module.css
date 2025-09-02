@@ -1,0 +1,8 @@
+.clearFilter {
+  color: var(--y-sky-50) !important;
+  border: none;
+}
+
+.clearFilter:hover {
+  color: var(--y-sky-80) !important;
+}

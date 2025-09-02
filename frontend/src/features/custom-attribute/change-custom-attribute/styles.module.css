@@ -1,0 +1,88 @@
+.treeBlock {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  max-height: 340px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.nodeBody {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  min-height: 16px;
+  padding: 8px;
+  border-radius: 2px;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  color: var(--y-grey-50);
+  border-bottom: 1px solid var(--y-grey-20);
+  border-left: 1px solid var(--y-sky-20);
+}
+
+.nodeLeftAction {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 16px;
+  height: 100%;
+  gap: 4px;
+  margin-right: 4px;
+}
+
+.arrowIcon {
+  color: var(--y-sky-50);
+  transition: all 0.2s ease-in;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  transform: rotate(270deg);
+}
+
+.arrowIconOpen {
+  color: var(--y-sky-80);
+  transform: rotate(360deg);
+}
+
+.isRoot {
+  border-left: none;
+}
+
+.isLast {
+  border-bottom: none;
+}
+
+.loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+}
+
+/* // LOAD MORE */
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 33px;
+  height: 33px;
+}
+
+.loadMore {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  flex-grow: 1;
+  border-bottom: 1px solid var(--y-grey-20);
+  border-left: 1px solid var(--y-sky-20);
+}
+
+.isRoot {
+  border-left: none;
+}

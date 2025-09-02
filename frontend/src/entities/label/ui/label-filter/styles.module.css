@@ -1,0 +1,23 @@
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  gap: 8px;
+  margin: 0;
+  margin-top: 8px;
+  max-height: 52px;
+  overflow: hidden;
+}
+
+.maxSize {
+  max-height: max-content;
+  overflow: auto;
+}
+
+.showMore {
+  margin-top: 12px;
+}
+
+.noData {
+  color: var(--y-sky-80);
+}

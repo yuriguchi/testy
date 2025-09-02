@@ -1,0 +1,8 @@
+.button {
+  min-height: 64px;
+  border-width: 2px;
+  border-color: var(--y-sky-30);
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: 400;
+}

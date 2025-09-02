@@ -1,0 +1,20 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+
+.treeBlock {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  max-height: 340px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.suiteSpecificBlock {
+  display: flex;
+  flex-direction: column;
+}

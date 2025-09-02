@@ -1,0 +1,28 @@
+.formBetween {
+  width: 100%;
+}
+
+.formBetween label {
+  width: 100%;
+  pointer-events: none;
+}
+
+.formBetween label::after {
+  display: none;
+}
+
+.formLabel {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.assigneeToMe {
+  color: var(--y-interactive-default);
+  cursor: pointer;
+  border-color: transparent;
+  background-color: transparent;
+  pointer-events: auto;
+}

@@ -1,0 +1,76 @@
+.wrapper {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+}
+
+.form {
+  display: flex;
+  width: 100%;
+}
+
+.list {
+  margin-top: 14px;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  border: 1px solid #d9d9d9;
+  border-radius: 2px;
+  padding: 6px;
+}
+
+.list > li {
+  display: flex;
+  cursor: pointer;
+  width: fit-content;
+}
+
+.popup {
+  position: absolute;
+  top: 32px;
+  left: 0;
+  background-color: white;
+  width: 100%;
+  z-index: 2;
+  border: 1px solid #d9d9d9;
+  border-radius: 2px;
+  height: 160px;
+  overflow: hidden;
+}
+
+.popup ul {
+  margin: 6px 0;
+  height: 100%;
+  overflow-y: auto;
+  padding: 10px 0;
+  padding-top: 0;
+}
+
+.popup li {
+  list-style: none;
+  cursor: pointer;
+  padding-left: 11px;
+}
+
+.popup li:hover {
+  background: #fafafa;
+}
+
+.line {
+  width: 100%;
+  height: 2px;
+  background-color: #fafafa;
+  margin: 4px 0;
+}
+
+.newLabel {
+  display: flex;
+  width: 100%;
+  cursor: pointer;
+  padding-left: 11px;
+}
+
+.newLabel:hover {
+  background: #fafafa;
+}

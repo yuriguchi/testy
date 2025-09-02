@@ -1,0 +1,29 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  width: 100%;
+  flex: 1 1 100%;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  padding: 24px;
+}
+
+.header h4 {
+  margin-bottom: 0;
+}
+
+.table {
+  margin-top: 20px;
+  padding: 24px;
+  padding-top: 0;
+  padding-bottom: 0;
+  height: 100%;
+}

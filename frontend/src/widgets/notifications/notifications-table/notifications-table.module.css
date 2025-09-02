@@ -1,0 +1,13 @@
+.readRow {
+  background-color: #f1f1f1;
+}
+
+.unreadRow {
+  font-weight: 600;
+}
+
+.linkRow {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}

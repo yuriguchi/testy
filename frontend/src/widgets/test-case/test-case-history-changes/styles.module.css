@@ -1,0 +1,21 @@
+.item {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  padding: 12px 0;
+}
+
+.userInfo {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  gap: 4px;
+}

@@ -1,0 +1,16 @@
+.action {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.2s ease-in;
+  color: var(--y-sky-50);
+}
+
+.action svg {
+  cursor: pointer;
+}
+
+.action svg:hover {
+  color: var(--y-pending-hover);
+}

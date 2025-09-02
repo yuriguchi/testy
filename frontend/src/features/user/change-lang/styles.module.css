@@ -1,0 +1,14 @@
+.select {
+  width: 120px;
+}
+
+.select :global(.ant-select-selector) {
+  background: var(--y-grey-10) !important;
+  border: none !important;
+}
+
+.label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

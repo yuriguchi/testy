@@ -1,0 +1,29 @@
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px;
+  margin: 0;
+  gap: 32px;
+}
+
+.card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-left: 4px solid transparent;
+  height: 64px;
+  padding: 16px 24px;
+  background-color: #fff;
+  width: 100%;
+  border-radius: 4px;
+}
+
+.cardValue {
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 32px;
+  color: var(--y-grey-50);
+  margin-right: 8px;
+}

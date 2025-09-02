@@ -1,0 +1,12 @@
+.legendTitle {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+  color: var(--y-sky-80);
+  margin-left: 4px;
+}
+
+.legendValue {
+  margin-left: auto;
+}

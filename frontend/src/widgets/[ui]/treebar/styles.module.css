@@ -1,0 +1,316 @@
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-shrink: 0;
+  background-color: var(--y-grey-10);
+  padding: 24px 0;
+  padding-bottom: 0;
+  height: 100vh;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  left: 0;
+}
+
+.collapsed {
+  padding: 24px 0 28px;
+}
+
+.collapsed .actionBlock {
+  align-items: center;
+  justify-content: center;
+}
+
+.collapsed .headerTitle,
+.collapsed .activeTab,
+.collapsed .searchBlock,
+.collapsed .treeViewBlock {
+  display: none;
+}
+
+.collapsed .topBlock {
+  padding: 0;
+}
+
+.collapsed .headerBlock {
+  justify-content: center;
+}
+
+.collapsed .backBtn {
+  transform: rotate(180deg);
+  margin-bottom: 6px;
+}
+
+.backBlock {
+  height: 100%;
+  display: flex;
+  align-items: flex-start;
+  /* justify-content: center; */
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+.topBlock {
+  display: flex;
+  flex-direction: column;
+  padding: 0 44px 0 32px;
+  row-gap: 16px;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.headerBlock {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+}
+
+.headerBlockMin {
+  flex-direction: column-reverse;
+  gap: 16px;
+}
+
+.headerTitle {
+  margin-bottom: 0 !important;
+  min-height: 32px;
+}
+
+.backBtn {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-size: 24px;
+  color: var(--y-sky-50);
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  padding: 0;
+}
+
+.activeTab {
+  font-size: 18px;
+  line-height: 24px;
+  color: var(--y-sky-80);
+  user-select: none;
+}
+
+.actionBlock {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.actionBlockMin {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.searchBlock {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  gap: 8px;
+}
+
+.searchInputWrapper {
+  width: 100%;
+}
+
+.treeViewBlock {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  height: calc(100vh - 12px - 48px - 108px - 24px);
+  overflow: auto;
+  padding: 12px 30px 0 32px;
+  margin-right: 14px;
+  overscroll-behavior: contain;
+}
+
+.nodeBody {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  min-height: 16px;
+  padding: 8px 4px;
+  border-radius: 2px;
+  color: var(--y-grey-50);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  cursor: pointer;
+  border-left: 1px solid var(--y-sky-20);
+  border-bottom: 1px solid var(--y-sky-20);
+}
+
+.nodeBody:hover .infoIcon {
+  opacity: 1;
+}
+
+.nodeBodyContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 4px;
+}
+
+.infoIcon {
+  display: block;
+  margin: 0 4px;
+  min-width: 16px;
+  min-height: 16px;
+  margin-bottom: auto;
+  opacity: 0;
+}
+
+.nodeLeftAction {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 16px;
+  height: 100%;
+  margin-right: 4px;
+  gap: 2px;
+}
+
+.arrowIcon {
+  color: var(--y-sky-50);
+  transition: all 0.2s ease-in;
+  min-width: 16px;
+  cursor: pointer;
+  transform: rotate(270deg);
+  margin-bottom: auto;
+}
+
+.arrowIconOpen {
+  color: var(--y-sky-80);
+  transform: rotate(360deg);
+}
+
+.loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  margin-bottom: auto;
+}
+
+.loaderMore {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 24px;
+}
+
+.activeNode {
+  color: var(--y-interactive-default);
+  background-color: var(--y-grey-0);
+}
+
+.activeContextMenu {
+  color: var(--y-interactive-default);
+  background-color: var(--y-grey-20);
+}
+
+.selectable {
+  cursor: pointer;
+}
+
+.noborder {
+  border-left: none;
+}
+
+.expandIcon {
+  visibility: hidden;
+  color: var(--y-sky-50);
+  min-width: 16px;
+  margin-left: auto;
+  margin-bottom: auto;
+  transition: color 0.2s ease-in;
+}
+
+.nodeBody:hover .expandIcon {
+  visibility: visible;
+}
+
+.arrowIcon:hover,
+.expandIcon:hover {
+  color: var(--y-pending-hover);
+}
+
+/* BREADCRUMBS */
+.breadcrumbsBlock {
+  padding: 4px 0;
+  display: flex;
+  flex-wrap: wrap;
+  overflow: hidden;
+  margin-top: 12px;
+}
+
+.breadcrumbsIcons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 24px;
+}
+
+.breadCrumbsArrowIcon {
+  height: 24px;
+  width: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--y-sky-80);
+  cursor: pointer;
+  transform: rotate(90deg);
+}
+
+.breadCrumbsArrowIconNoActive {
+  color: var(--y-sky-50);
+  cursor: default;
+}
+
+.breadcrumbsTitle,
+.breadcrumbsDiv {
+  display: flex;
+  color: var(--y-grey-50);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  user-select: none;
+}
+
+.breadcrumbsDiv {
+  padding: 0 6px;
+}
+
+.treebarNodeLink {
+  color: var(--y-sky-80);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.activeLink {
+  color: var(--y-interactive-default);
+}

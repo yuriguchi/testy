@@ -1,0 +1,73 @@
+.tr td:first-child {
+  text-align: left;
+}
+
+.nodeLeftAction {
+  min-width: 24px;
+  height: 24px;
+  width: fit-content;
+  margin-right: 4px;
+  float: left;
+}
+
+.arrowIcon {
+  color: var(--y-sky-50);
+  transition: all 0.2s ease-in;
+  min-width: 24px;
+  cursor: pointer;
+  transform: rotate(270deg);
+  margin-bottom: auto;
+}
+
+.arrowIconOpen {
+  color: var(--y-sky-80);
+  transform: rotate(360deg);
+}
+
+.name {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 24px;
+  text-wrap: balance;
+  overflow-wrap: anywhere;
+}
+
+.entityName {
+  line-height: 24px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--y-sky-80);
+}
+
+.containerItem {
+  min-height: 48px;
+  padding: 12px 0;
+}
+
+.active {
+  background-color: var(--y-grey-10);
+}
+
+.activeLink {
+  font-weight: 600;
+  color: var(--y-interactive-hover);
+}
+
+.list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin: 0;
+  justify-content: center;
+}
+
+.loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  margin-bottom: auto;
+}

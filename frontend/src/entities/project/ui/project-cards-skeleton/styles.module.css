@@ -1,0 +1,58 @@
+.cardWrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  border-radius: 4px;
+  user-select: none;
+}
+
+.cardContainer {
+  position: relative;
+  flex-direction: column;
+  padding: 24px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 32px;
+  grid-template-areas:
+    "Name Name Action"
+    "Data Data Data"
+    "ActionBtns ActionBtns ActionBtns";
+}
+
+.nameBlock {
+  grid-area: Name;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.btnsBlock {
+  grid-area: ActionBtns;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  height: 56px;
+  border-top: solid 1px var(--y-sky-20);
+  margin: 0;
+}
+
+.data {
+  grid-area: Data;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 8px;
+  column-gap: 24px;
+  padding-left: 0;
+}
+
+.bookmark {
+  grid-area: Action;
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}

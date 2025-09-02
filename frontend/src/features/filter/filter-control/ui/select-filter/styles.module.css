@@ -1,0 +1,95 @@
+.titleBlock {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+}
+
+.title {
+  color: var(--y-color-text-primary);
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 32px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  min-width: 300px;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  height: 32px;
+  cursor: pointer;
+  padding: 0 12px;
+}
+
+.item:hover {
+  background-color: var(--y-sky-0);
+}
+
+.itemEditing {
+  display: flex;
+  align-items: center;
+  height: 32px;
+  padding: 0 12px;
+}
+
+.active {
+  background-color: var(--y-sky-0);
+}
+
+.btns {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  height: 24px;
+  width: 24px;
+  border-radius: 100%;
+  color: var(--y-sky-80);
+}
+
+.btn:hover {
+  background-color: var(--y-sky-20);
+}
+
+.deleteBtn {
+  color: var(--y-error-block);
+}
+
+.input {
+  height: 32px;
+  width: 100%;
+  padding: 0;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.itemInput {
+  height: 32px;
+  width: 100%;
+  padding: 0;
+  font-size: 14px;
+}
+
+.unsaved {
+  color: var(--y-interactive-default);
+  font-size: 14px;
+  position: absolute;
+}

@@ -1,0 +1,9 @@
+.labels {
+  display: flex;
+  gap: 2px;
+}
+
+.extra {
+  margin-left: 5;
+  cursor: pointer;
+}

@@ -1,0 +1,74 @@
+.actionBtn {
+  width: 32px;
+  height: 32px;
+}
+
+.actionBtn svg {
+  color: var(--y-sky-50);
+}
+
+.actionBtn:hover svg {
+  color: var(--y-sky-70);
+}
+
+.filterMenuList {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.filterMenuListItem {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  height: 32px;
+  cursor: pointer;
+  padding: 0 12px;
+  gap: 4px;
+}
+
+.filterMenuListItem:hover {
+  background-color: var(--y-sky-0);
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border: none;
+  height: 24px;
+  width: 24px;
+  color: var(--y-sky-80);
+}
+
+.delete {
+  color: var(--y-error-block);
+}
+
+.delete button {
+  color: var(--y-error-block);
+}
+
+.renameBtn {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+  border: 1px solid var(--y-sky-30);
+  background: transparent;
+  color: var(--y-sky-80);
+  cursor: pointer;
+}
+
+.saveRename {
+  color: var(--y-success-block);
+}
+
+.renameBtn:hover {
+  border-color: var(--y-sky-80);
+}

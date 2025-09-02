@@ -1,0 +1,136 @@
+{
+  "id": "f35217a6-9e6f-4cd6-8edc-94a437eea7f7",
+  "version": "2.0",
+  "name": "test1",
+  "url": "https://suninjuly.github.io/",
+  "tests": [{
+    "id": "e63fb02f-7e08-4435-9f2c-f4e6d175243e",
+    "name": "submit",
+    "commands": [{
+      "id": "08a48ca3-6780-4cb9-8b11-e272ee7b4e6d",
+      "comment": "",
+      "command": "open",
+      "target": "/text_input_task.html",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "7a4e6559-8b85-46da-b9c4-fbad9ad35228",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "550x692",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "63ceff49-e9e4-4535-ba05-cdf2912a87ec",
+      "comment": "",
+      "command": "click",
+      "target": "css=.textarea",
+      "targets": [
+        ["css=.textarea", "css:finder"],
+        ["xpath=//input[@type='text']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "6d3b6f7e-49ab-46aa-9c6d-052e83853971",
+      "comment": "",
+      "command": "type",
+      "target": "css=.textarea",
+      "targets": [
+        ["css=.textarea", "css:finder"],
+        ["xpath=//input[@type='text']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "get()"
+    }, {
+      "id": "9c6fec2c-6780-4ebe-8748-3d8466dc0690",
+      "comment": "",
+      "command": "click",
+      "target": "id=submit_button",
+      "targets": [
+        ["id=submit_button", "id"],
+        ["css=#submit_button", "css:finder"],
+        ["xpath=//button[@id='submit_button']", "xpath:attributes"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Submit')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "c504805d-dfab-4fbd-b622-d0b0c9f74bd7",
+      "comment": "",
+      "command": "click",
+      "target": "css=html",
+      "targets": [
+        ["css=html", "css:finder"],
+        ["xpath=//html", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c17a1136-bf15-4ce2-910c-10ce892b7552",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "7152645e-76c2-41c0-a02c-3233c1c596fd",
+    "name": "submit 2",
+    "commands": [{
+      "id": "c0122ad9-806d-4e33-9bec-566c7e771bf6",
+      "comment": "",
+      "command": "open",
+      "target": "/text_input_task.html",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "69709f2b-288d-4425-8ceb-ed2e5e0aedf2",
+      "comment": "",
+      "command": "type",
+      "target": "css=.textarea",
+      "targets": [
+        ["css=.textarea", "css:finder"],
+        ["xpath=//input[@type='text']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "get"
+    }, {
+      "id": "da315c84-b88c-4774-bfbf-920376a88a88",
+      "comment": "",
+      "command": "click",
+      "target": "id=submit_button",
+      "targets": [
+        ["id=submit_button", "id"],
+        ["css=#submit_button", "css:finder"],
+        ["xpath=//button[@id='submit_button']", "xpath:attributes"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Submit')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "7ce5a789-8dd5-40cf-bc5e-bf9048e15252",
+      "comment": "",
+      "command": "chooseOkOnNextConfirmation",
+      "target": "Thank you for submitting the form!",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d8c44c42-5896-41d0-a1fa-bd6c42372b7c",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "1bed64a3-f09b-4808-818e-b687bf5bf6fb",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["e63fb02f-7e08-4435-9f2c-f4e6d175243e"]
+  }],
+  "urls": ["https://suninjuly.github.io/", "https://suninjuly.github.io/text_input_task.html"],
+  "plugins": []
+}

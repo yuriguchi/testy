@@ -1,0 +1,11 @@
+.collapseBlock {
+  color: var(--y-sky-80);
+}
+
+.collapseBlockTitle {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+  width: fit-content;
+}
