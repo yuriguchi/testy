@@ -126,6 +126,7 @@ services:
     image: testy:latest
     pull_policy: build
     command: celery -A root worker -B -l INFO
+    mem_limit: 1g
     env_file:
       - ${ENV_FILE:-.env}
     volumes:
@@ -149,6 +150,7 @@ services:
     image: testy:latest
     pull_policy: build
     restart: always
+    mem_limit: 1g
     env_file:
       - ${ENV_FILE:-.env}
     depends_on:
