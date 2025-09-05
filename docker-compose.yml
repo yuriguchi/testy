@@ -3,8 +3,8 @@ services:
     container_name: nginx
     image: nginx:1.25.1-alpine
     ports:
-      - '80:80'
-      - '443:443'
+      - '9080:80'
+      - '9444:443'
     env_file:
       - ${ENV_FILE:-.env}
     volumes:
