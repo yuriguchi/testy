@@ -60,7 +60,7 @@ services:
     deploy:
       resources:
         limits:
-          cpus: '3.0'
+          cpus: '2.0'
           memory: 4g
 
   db:
@@ -137,7 +137,7 @@ services:
     deploy:
       resources:
         limits:
-          cpus: '3.0'
+          cpus: '2.0'
           memory: 4g
 
   notification-worker:
