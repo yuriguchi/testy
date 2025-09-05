@@ -15,7 +15,7 @@ services:
       - build_data:/opt/testy-frontend/build
       - ${SSL_CERT_KEY_PATH}:/etc/ssl/private/cert.key
       - ${SSL_CERT_PATH}:/etc/ssl/certs/cert.crt
-    command: exec nginx -g 'daemon off;'"
+    command: /bin/sh -c "exec nginx -g 'daemon off;'"
     depends_on:
       - client
       - testy
