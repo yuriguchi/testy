@@ -9,7 +9,7 @@ services:
       - ${ENV_FILE:-.env}
     volumes:
       - testy-static:/opt/testy/testy/testy-static
-      - ./nginx/testy-prod.conf.template:/etc/nginx/templates/testy-prod.conf.template
+      - nginx_temp_data:/nginx/testy-prod.conf.template:/etc/nginx/templates/testy-prod.conf.template
       - nginx_data:/nginx/default.conf:/etc/nginx/conf.d/default.conf
       - media_data:/opt/testy/testy/media
       - build_data:/opt/testy-frontend/build
@@ -161,3 +161,4 @@ volumes:
   testy-static:
   redis_data:
   nginx_data:
+  nginx_temp_data:
