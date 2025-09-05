@@ -57,6 +57,11 @@ services:
         condition: service_healthy
       redis:
         condition: service_healthy
+    deploy:
+      resources:
+        limits:
+          cpus: '3.0'
+          memory: 4g
 
   db:
     container_name: testy_db
@@ -114,7 +119,6 @@ services:
     image: testy:latest
     pull_policy: build
     command: celery -A root worker -B -l INFO
-    mem_limit: 1g
     env_file:
       - ${ENV_FILE:-.env}
     volumes:
@@ -130,6 +134,11 @@ services:
     depends_on:
       - redis
       - pgbouncer
+    deploy:
+      resources:
+        limits:
+          cpus: '3.0'
+          memory: 4g
 
   notification-worker:
     container_name: notifications
@@ -138,7 +147,6 @@ services:
     image: testy:latest
     pull_policy: build
     restart: always
-    mem_limit: 1g
     env_file:
       - ${ENV_FILE:-.env}
     depends_on:
