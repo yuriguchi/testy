@@ -2,7 +2,7 @@ services:
   nginx:
     container_name: nginx
     build:
-      context: .
+      context: ./nginx
       dockerfile: Dockerfile
     ports:
       - '80:80'
@@ -11,16 +11,12 @@ services:
       - type: bind
         source: ./backend/testy/testy-static
         target: /opt/testy/testy/testy-static
-      - type: volume
-        source: testy_volumes
+      - type: bind
+        source: ${VOLUMES_PATH}/media
         target: /opt/testy/testy/media
-        volume:
-          nocopy: true
-      - type: volume
-        source: testy_volumes
+      - type: bind
+        source: ${VOLUMES_PATH}/build
         target: /opt/testy-frontend/build
-        volume:
-          nocopy: true
     env_file:
       - ${ENV_FILE:-.env}
     depends_on:
@@ -31,17 +27,13 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
+    volumes:
+      - '/app/node_modules'
+      - '${VOLUMES_PATH}/build:/app/build'
     environment:
       - NODE_ENV=production
     env_file:
       - ${ENV_FILE:-.env}
-    volumes:
-      - '/app/node_modules'
-      - type: volume
-        source: testy_volumes
-        target: /app/build
-        volume:
-          nocopy: true
     user: "${UID}:${GID}"
   testy:
     container_name: testy
@@ -55,14 +47,8 @@ services:
     image: testy:latest
     pull_policy: build
     volumes:
-      - type: volume
-        source: testy_volumes
-        target: /testy/media
-        volume:
-          nocopy: true
-      - type: bind
-        source: ./backend/testy/testy-static
-        target: /testy/testy-static
+      - './backend/testy/media:/testy/media'
+      - './backend/testy/testy-static:/testy/testy-static'
     environment:
       - DJANGO_SETTINGS_MODULE=root.settings.production
     ports:
@@ -85,11 +71,7 @@ services:
     container_name: testy_db
     image: postgres:14.5-alpine
     volumes:
-      - type: volume
-        source: testy_volumes
-        target: /var/lib/postgresql/data
-        volume:
-          nocopy: true
+      - '${VOLUMES_PATH}/pg-data:/var/lib/postgresql/data'
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
@@ -128,11 +110,7 @@ services:
     image: redis:alpine
     command: redis-server --appendonly yes
     volumes:
-      - type: volume
-        source: testy_volumes
-        target: /data
-        volume:
-          nocopy: true
+      - '${VOLUMES_PATH}/redis_data:/data'
     env_file:
       - ${ENV_FILE:-.env}
     ports:
@@ -142,7 +120,6 @@ services:
       interval: 5s
       timeout: 5s
       retries: 5
-    user: "${UID}:${GID}"
 
   celery:
     container_name: testy_celery
@@ -153,14 +130,8 @@ services:
     pull_policy: build
     command: celery -A root worker -B -l INFO
     volumes:
-      - type: volume
-        source: testy_volumes
-        target: /testy/media
-        volume:
-          nocopy: true
-      - type: bind
-        source: ./backend/testy/testy-static
-        target: /testy/testy-static
+      - './backend/testy/media:/testy/media'
+      - './backend/testy/testy-static:/testy/testy-static'
     env_file:
       - ${ENV_FILE:-.env}
     environment:
@@ -191,13 +162,5 @@ services:
     depends_on:
       - testy
     command: python manage.py runworker notifications
-
-volumes:
-  testy_volumes:
-    driver: local
-    driver_opts:
-      type: none
-      device: /data/volumes
-      o: bind
 
 

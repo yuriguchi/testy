@@ -1,5 +1,5 @@
 server {
-    listen 443 ssl default_server;
+    listen 443 ssl;
     charset utf-8;
 
     ssl_certificate_key    /etc/ssl/private/cert.key;
@@ -9,7 +9,6 @@ server {
 
     root /opt/testy-frontend/build;
     index index.html;
-    autoindex off;
 
     # API endpoints
     location ~ ^/(admin|api|api-auth|auth|swagger|plugins|celery-progress|attachments|avatars|sentry-debug)/ {
