@@ -21,8 +21,8 @@ RUN mkdir -p /opt/testy/testy/testy-static \
     && mkdir -p /data/volumes/redis_data
 
 # Copy nginx configuration
-COPY testy-prod.conf.template /etc/nginx/templates/
-COPY default.conf /etc/nginx/conf.d/
+COPY nginx/testy-prod.conf.template /etc/nginx/templates/
+COPY nginx/default.conf /etc/nginx/conf.d/
 
 # Set permissions for volumes
 RUN chmod -R 777 /data/volumes
