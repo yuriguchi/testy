@@ -10,15 +10,22 @@ RUN openssl req -x509 -nodes -days 3650 -newkey rsa:2048 \
     -out /etc/ssl/certs/cert.crt \
     -subj "/C=RU/ST=MSK/L=Moscow/O=TestY/OU=Development/CN=localhost"
 
-# Create required directories
+# Create required directories and volumes directory structure
 RUN mkdir -p /opt/testy/testy/testy-static \
     && mkdir -p /opt/testy/testy/media \
     && mkdir -p /opt/testy-frontend/build \
-    && mkdir -p /opt/testy-frontend/build/static
+    && mkdir -p /opt/testy-frontend/build/static \
+    && mkdir -p /data/volumes/media \
+    && mkdir -p /data/volumes/build \
+    && mkdir -p /data/volumes/pg-data \
+    && mkdir -p /data/volumes/redis_data
 
 # Copy nginx configuration
 COPY testy-prod.conf.template /etc/nginx/templates/
 COPY default.conf /etc/nginx/conf.d/
+
+# Set permissions for volumes
+RUN chmod -R 777 /data/volumes
 
 # Set proper permissions
 RUN chmod 644 /etc/ssl/certs/cert.crt \
