@@ -13,8 +13,6 @@ services:
       - testy-static:/opt/testy/testy/testy-static
       - media_data:/opt/testy/testy/media
       - build_data:/opt/testy-frontend/build
-      - ${SSL_CERT_KEY_PATH}:/etc/ssl/private/cert.key:ro
-      - ${SSL_CERT_PATH}:/etc/ssl/certs/cert.crt:ro
     depends_on:
       - client
       - testy
