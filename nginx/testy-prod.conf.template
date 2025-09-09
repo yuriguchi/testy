@@ -8,8 +8,9 @@ server {
     client_max_body_size 1000M;
 
     root /opt/testy-frontend/build;
-	index index.html index.html;
+    index index.html;
 
+    # API endpoints
     location ~ ^/(admin|api|api-auth|auth|swagger|plugins|celery-progress|attachments|avatars|sentry-debug)/ {
         proxy_redirect off;
         proxy_pass http://testy:8000;
@@ -21,6 +22,7 @@ server {
         proxy_set_header X-Forwarded-Proto $scheme;
     }
 
+    # WebSocket connections
     location ~ ^/(ws)/ {
         proxy_pass http://testy:8000;
         proxy_http_version 1.1;
@@ -28,17 +30,36 @@ server {
         proxy_set_header Connection "upgrade";
     }
 
-    location / {
-		try_files $uri $uri/ /index.html;
-	}
+    # Static files (build)
+    location /static/ {
+        alias /opt/testy-frontend/build/static/;
+        expires 30d;
+        add_header Cache-Control "public, no-transform";
+        access_log off;
+    }
 
+    # Static files (Django)
     location /testy-static/ {
-		root /opt/testy/testy;
-	}
+        alias /opt/testy/testy/testy-static/;
+        expires 30d;
+        add_header Cache-Control "public, no-transform";
+        access_log off;
+    }
 
-	location /media/ {
-		root /opt/testy/testy;
-	}
+    # Media files
+    location /media/ {
+        alias /opt/testy/testy/media/;
+        expires 30d;
+        add_header Cache-Control "public, no-transform";
+        access_log off;
+    }
+
+    # React app
+    location / {
+        try_files $uri $uri/ /index.html;
+        expires -1;
+        add_header Cache-Control "no-store, no-cache, must-revalidate";
+    }
 }
 
 server {
